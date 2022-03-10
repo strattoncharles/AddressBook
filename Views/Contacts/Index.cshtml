@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<AddressBook.Models.Contact>
 @inject AddressBook.Services.Interfaces.IImageService _imageService
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,7 +12,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped" id="contacts">
     <thead>
         <tr>
             <th>
@@ -90,3 +92,13 @@
 }
     </tbody>
 </table>
+
+@section scripts {
+  
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready( function () {
+    $('#contacts').DataTable();
+} );
+</script>
+}
